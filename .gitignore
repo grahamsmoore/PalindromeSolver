@@ -1,0 +1,10 @@
+/.vs
+/*.tss
+/*.user
+/packages
+/PalindromeSolver.Tests/bin
+/PalindromeSolver.Tests/obj
+/PalindromeSolver.Runner/bin
+/PalindromeSolver.Runner/obj
+/PalindromeSolver/obj
+/PalindromeSolver/bin
