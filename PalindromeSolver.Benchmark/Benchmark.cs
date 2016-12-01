@@ -6,15 +6,9 @@ namespace PalindromeSolver.Benchmark
     public class Benchmark
     {
         [Benchmark]
-        public List<PalindromeResult> Method1()
+        public List<PalindromeResult> Run()
         {
-            return Solver.RunMethod1(Solver.DefaultInputString);
-        }
-
-        [Benchmark]
-        public List<PalindromeResult> Method2()
-        {
-            return Solver.RunMethod2(Solver.DefaultInputString);
+            return Solver.Run(Solver.DefaultInputString);
         }
     }
 }

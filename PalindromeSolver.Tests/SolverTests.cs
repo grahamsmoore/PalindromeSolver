@@ -9,38 +9,37 @@ namespace PalindromeSolver.Tests
     {
         private void VerifyOutput(string input, int resultIndex, string palindrome)
         {
-            var result = Solver.RunMethod1(input);
+            var result = Solver.Run(input);
             var output = Solver.Output(result).ToList();
 
             output[resultIndex].Should().Be(palindrome);
         }
 
-        private void VerifySinglePalindromeResult(string input, int resultIndex, string palindrome, int index,
-            int length)
+        private void VerifySinglePalindromeResult(string input, int resultIndex, int start, int end, int length)
         {
-            var result = Solver.RunMethod1(input);
+            var result = Solver.Run(input);
 
-            result[resultIndex].Palindrome.Should().Be(palindrome);
-            result[resultIndex].Index.Should().Be(index);
+            result[resultIndex].Start.Should().Be(start);
+            result[resultIndex].End.Should().Be(end);
             result[resultIndex].Length.Should().Be(length);
         }
 
         [Test]
         public void VerifyEmptyListReturnedWhenEmptyInputString()
         {
-            Solver.RunMethod1(string.Empty).Should().BeEmpty();
+            Solver.Run(string.Empty).Should().BeEmpty();
         }
 
         [Test]
         public void VerifyEmptyListReturnedWhenNoPalindromesFound()
         {
-            Solver.RunMethod1("qwertyuiop").Should().BeEmpty();
+            Solver.Run("qwertyuiop").Should().BeEmpty();
         }
 
         [Test]
         public void VerifyEmptyListReturnedWhenNullInputString()
         {
-            Solver.RunMethod1(null).Should().BeEmpty();
+            Solver.Run(null).Should().BeEmpty();
         }
 
         [Test]
@@ -52,25 +51,25 @@ namespace PalindromeSolver.Tests
         [Test]
         public void VerifyPalindromeReturnAtEndOfInputString()
         {
-            VerifySinglePalindromeResult("qwertyabacaba", 1, "abacaba", 6, 7);
+            VerifySinglePalindromeResult("qwertyabacaba", 1, 6, 13, 7);
         }
 
         [Test]
         public void VerifyPalindromeReturnAtStartOfInputString()
         {
-            VerifySinglePalindromeResult("abacabaqwerty", 1, "abacaba", 0, 7);
+            VerifySinglePalindromeResult("abacabaqwerty", 1, 0, 7, 7);
         }
 
         [Test]
         public void VerifyPalindromeReturnForEvenLengthPalindromes()
         {
-            VerifySinglePalindromeResult("qwertynoonqwerty", 0, "noon", 6, 4);
+            VerifySinglePalindromeResult("qwertynoonqwerty", 0, 6, 10, 4);
         }
 
         [Test]
         public void VerifyPalindromeReturnForOddLengthPalindromes()
         {
-            VerifySinglePalindromeResult("qwertybobqwerty", 0, "bob", 6, 3);
+            VerifySinglePalindromeResult("qwertybobqwerty", 0, 6, 9, 3);
         }
 
         [Test]

@@ -5,16 +5,16 @@ namespace PalindromeSolver
 {
     public struct PalindromeResult
     {
-        public PalindromeResult(string palindrome, int index, int length)
+        public PalindromeResult(int start, int end, int length)
         {
-            Palindrome = palindrome;
-            Index = index;
+            Start = start;
+            End = end;
             Length = length;
         }
 
-        public string Palindrome { get; set; }
+        public int Start { get; set; }
 
-        public int Index { get; set; }
+        public int End { get; set; }
 
         public int Length { get; set; }
     }
