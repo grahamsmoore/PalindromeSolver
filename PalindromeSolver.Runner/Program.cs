@@ -6,9 +6,9 @@ namespace PalindromeSolver.Runner
     {
         private static void Main(string[] args)
         {
-            var solver = new Solver();
-            var result = solver.Run(Solver.DefaultInputString);
-            var output = solver.Output(result);
+            var result = Solver.RunMethod1(Solver.DefaultInputString);
+            var result2 = Solver.RunMethod2(Solver.DefaultInputString);
+            var output = Solver.Output(result);
 
             foreach (var item in output)
                 Console.WriteLine(item);

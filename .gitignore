@@ -9,3 +9,6 @@
 /PalindromeSolver/obj
 /PalindromeSolver/bin
 /TestResults
+/PalindromeSolver.Benchmark/bin
+/PalindromeSolver.Benchmark/obj
+*.ncrunchsolution

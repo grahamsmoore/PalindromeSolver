@@ -3,11 +3,43 @@ using System.Linq;
 
 namespace PalindromeSolver
 {
-    public class Solver
+    public static class Solver
     {
         public const string DefaultInputString = "sqrrqabccbatudefggfedvwhijkllkjihxymnnmzpop";
+        public const int MinimumPalindromeLength = 3;
 
-        public List<PalindromeResult> Run(string input)
+        public static List<PalindromeResult> RunMethod2(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return new List<PalindromeResult>();
+
+            var length = input.Length;
+
+            var centersLength = (2 * length) + 1;
+        
+            var palindromes = new List<PalindromeResult>();
+
+            for (var i = 0; i < centersLength; i++)
+            {
+                var s = i / 2;
+                var e = s + i % 2;
+
+                while (s > 0 && e < length && input[s - 1] == input[e])
+                {
+                    s -= 1;
+                    e += 1;
+                }
+
+                var palindromeLength = e - s;
+                if (palindromeLength >= MinimumPalindromeLength)
+                {
+                    palindromes.Add(new PalindromeResult(input.Substring(s, palindromeLength), i, palindromeLength));
+                }
+            }
+
+            return palindromes;
+        }
+
+        public static List<PalindromeResult> RunMethod1(string input)
         {
             if (string.IsNullOrEmpty(input)) return new List<PalindromeResult>();
 
@@ -28,7 +60,7 @@ namespace PalindromeSolver
             return listOfPalindromes;
         }
 
-        public IEnumerable<string> Output(List<PalindromeResult> palindromes)
+        public static IEnumerable<string> Output(List<PalindromeResult> palindromes)
         {
             var orderedPalindromes = palindromes.OrderByDescending(x => x.Length);
             var uniquePalindromes = GetUniquePalindroms(orderedPalindromes);

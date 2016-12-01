@@ -7,14 +7,6 @@ namespace PalindromeSolver.Tests
     [TestClass]
     public class SolverTests
     {
-        private Solver _solver;
-
-        [TestInitialize]
-        public void Setup()
-        {
-            _solver = new Solver();
-        }
-
         [TestMethod]
         public void VerifyFirstOutputOfDefaultInputString()
         {
@@ -36,19 +28,19 @@ namespace PalindromeSolver.Tests
         [TestMethod]
         public void VerifyEmptyListReturnedWhenNoPalindromesFound()
         {
-            _solver.Run("qwertyuiop").Should().BeEmpty();
+            Solver.RunMethod1("qwertyuiop").Should().BeEmpty();
         }
 
         [TestMethod]
         public void VerifyEmptyListReturnedWhenEmptyInputString()
         {
-            _solver.Run(string.Empty).Should().BeEmpty();
+            Solver.RunMethod1(string.Empty).Should().BeEmpty();
         }
 
         [TestMethod]
         public void VerifyEmptyListReturnedWhenNullInputString()
         {
-            _solver.Run(null).Should().BeEmpty();
+            Solver.RunMethod1(null).Should().BeEmpty();
         }
 
         [TestMethod]
@@ -77,15 +69,15 @@ namespace PalindromeSolver.Tests
 
         private void VerifyOutput(string input, int resultIndex, string palindrome)
         {
-            var result = _solver.Run(input);
-            var output = _solver.Output(result).ToList();
+            var result = Solver.RunMethod1(input);
+            var output = Solver.Output(result).ToList();
 
             output[resultIndex].Should().Be(palindrome);
         }
 
         private void VerifySinglePalindromeResult(string input, int resultIndex, string palindrome, int index, int length)
         {
-            var result = _solver.Run(input);
+            var result = Solver.RunMethod1(input);
 
             result[resultIndex].Palindrome.Should().Be(palindrome);
             result[resultIndex].Index.Should().Be(index);
