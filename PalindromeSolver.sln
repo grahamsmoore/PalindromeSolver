@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromeSolver.Runner", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromeSolver.Benchmark", "PalindromeSolver.Benchmark\PalindromeSolver.Benchmark.csproj", "{5AAF774D-BEEF-4A14-83E7-3CECFDA1843E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromeSolver.Tests", "PalindromeSolver.Tests\PalindromeSolver.Tests.csproj", "{F15930C0-DE98-40DE-A999-C54C7D4D6359}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5AAF774D-BEEF-4A14-83E7-3CECFDA1843E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AAF774D-BEEF-4A14-83E7-3CECFDA1843E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AAF774D-BEEF-4A14-83E7-3CECFDA1843E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15930C0-DE98-40DE-A999-C54C7D4D6359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15930C0-DE98-40DE-A999-C54C7D4D6359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15930C0-DE98-40DE-A999-C54C7D4D6359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15930C0-DE98-40DE-A999-C54C7D4D6359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
