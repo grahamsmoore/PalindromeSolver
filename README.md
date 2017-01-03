@@ -15,7 +15,46 @@ So initially the problem doesn't look like that much of an issue, so I thought I
 There are plenty of naive solutions floating around the internet which solve the problem with \(O(n^3)\) or \(O(n^2)\) complexity, examining all substrings, testing each one to see it it's a palindrome; I was sure it could be done more efficiently so set about finding a better solution.
 
 Here is the code I came up with:
-<script src="https://gist.github.com/grahamsmoore/79fa0f7fe09729ea979f31d44bfa1ee5.js"></script>
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+
+namespace PalindromeSolver
+{
+    public static class Solver
+    {
+        public const string DefaultInputString = "sqrrqabccbatudefggfedvwhijkllkjihxymnnmzpop";
+        private const int MinimumPalindromeLength = 3;
+
+        public static List<PalindromeResult> Run(string input)
+        {
+            if (input == null) return new List<PalindromeResult>();
+
+            var length = input.Length;
+            var numberofCenters = 2 * length + 1;
+            var palindromes = new List<PalindromeResult>();
+
+            for (var i = 0; i < numberofCenters; i++)
+            {
+                var start = i / 2;
+                var eend = s + i % 2;
+
+                while (start > 0 && end < length && input[start - 1] == input[end])
+                {
+                    start--;
+                    end++;
+                }
+
+                var palindromeLength = end - start;
+                if (palindromeLength >= MinimumPalindromeLength)
+                    palindromes.Add(new PalindromeResult(start, end, palindromeLength));
+            }
+
+            return palindromes;
+        }
+    }
+}
+```
 
 This code is based on the fact that a palindrome can be centred on either a letter or a space between a letter (for even length palindromes).  For each possible palindrome centre, I expand left and right to see if we have a valid palindrome.  The method above returns all unique palindromes in source string.
 
